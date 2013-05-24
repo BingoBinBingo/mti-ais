@@ -51,10 +51,30 @@ var msg_create_set_msg_type_mmsi_list_data = {
     numActive: 0
 };
 
+var msg_create_set_msg_type_msg_list_data = {
+    title: '[SET MSG TYPE]',
+    list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
+    key: set_msg_type_key_common,
+    select: ['SATETY', 'NORMAL'],
+    active: 3,
+    selectActive: 0
+};
+
+var msg_create_set_msg_type_channel_list_data = {
+    title: '[SET MSG TYPE]',
+    list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
+    key: set_msg_type_key_common,
+    select: ['ALTERNATE', 'BOTH A&B', 'A', 'B'],
+    active: 4,
+    selectActive: 0
+};
+
 var msg_tx_list_data = {
     title: '[TX LOG]',
     list: [['13-APR-25', '1', '<br>', 'TO:412863000', 'S-ABM']],
-    active: 1
+    select: ['BROAD CAST', 'ADRS CAST'],
+    active: 1,
+    selectActive: 0
 };
 
 var msg_rx_list_data = {

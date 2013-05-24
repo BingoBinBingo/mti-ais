@@ -60,6 +60,14 @@ function msg_create_set_msg_type_mmsi() {
     render_num_list(msg_create_set_msg_type_mmsi_list_data);
 }
 
+function msg_create_set_msg_type_msg() {
+    render_select_list(msg_create_set_msg_type_msg_list_data);
+}
+
+function msg_create_set_msg_type_channel() {
+    render_select_list(msg_create_set_msg_type_channel_list_data);
+}
+
 function msg_create_set_msg() {
     render_dbl_list(msg_create_set_msg_list_data);
 }
