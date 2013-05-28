@@ -69,6 +69,12 @@ var msg_create_set_msg_type_channel_list_data = {
     selectActive: 0
 };
 
+var msg_create_set_msg_list_data = {
+    title: '[SET MSG]',
+    content: '',
+    numActive: 0
+};
+
 var msg_tx_list_data = {
     title: '[TX LOG]',
     list: [['13-APR-25', '1', '<br>', 'TO:412863000', 'S-ABM']],

@@ -100,3 +100,14 @@ li {
     width: 80px;
 }
 
+.set-msg {
+    height: 190px;
+    border: 1px solid #000;
+}
+
+.set-msg p {
+    height: 190px;
+    width: 300px;
+    word-wrap: break-word;
+}
+

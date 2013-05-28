@@ -69,7 +69,7 @@ function msg_create_set_msg_type_channel() {
 }
 
 function msg_create_set_msg() {
-    render_dbl_list(msg_create_set_msg_list_data);
+    render_msg_list(msg_create_set_msg_list_data);
 }
 
 function internsal() {

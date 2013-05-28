@@ -58,6 +58,16 @@ var num_list_tpl = '<ul>'
     + '{@/each}'
     + '</ul><span id="under">_</span>';
 
+//双列列表+下划线:用于数值改变
+var msg_list_tpl = '<ul>'
+    + '<li>'
+    + '${title}'
+    + '</li>'
+    + '<li class="set-msg">'
+    + '<p>sfasfsfdasfasfsfd.asf.sdaffffaaaaaaaa</p>'
+    + '</li>'
+    + '</ul><span id="under">_</span>';
+
 //渲染数据
 function render_list(data) {
     renderType = 'list';
@@ -102,3 +112,8 @@ function render_num_list(data) {
     $('.active').removeClass('active');
 }
 
+function render_msg_list(data) {
+    renderType = 'msg_list';
+    var list_html = juicer(msg_list_tpl, data);
+    $('#led').html(list_html);
+}
