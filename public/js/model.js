@@ -27,18 +27,18 @@ var msg_create_list_data = {
     active: 1
 };
 
-var set_msg_type_key_common = ['BROAD CAST', '412863000', 'SATETY', 'BOTH B'];
+var msg_common = ['BROAD CAST', '412863000', 'SATETY', 'BOTH B'];
 var msg_create_set_msg_type_list_data = {
     title: '[SET MSG TYPE]',
     list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
-    key: set_msg_type_key_common,
+    key: msg_common,
     active: 1
 };
 
 var msg_create_set_msg_type_adrs_list_data = {
     title: '[SET MSG TYPE]',
     list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
-    key: set_msg_type_key_common,
+    key: msg_common,
     select: ['BROAD CAST', 'ADRS CAST'],
     active: 1,
     selectActive: 0
@@ -47,14 +47,14 @@ var msg_create_set_msg_type_adrs_list_data = {
 var msg_create_set_msg_type_mmsi_list_data = {
     title: '[SET MSG TYPE]',
     list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
-    key: set_msg_type_key_common,
+    key: msg_common,
     numActive: 0
 };
 
 var msg_create_set_msg_type_msg_list_data = {
     title: '[SET MSG TYPE]',
     list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
-    key: set_msg_type_key_common,
+    key: msg_common,
     select: ['SATETY', 'NORMAL'],
     active: 3,
     selectActive: 0
@@ -63,7 +63,7 @@ var msg_create_set_msg_type_msg_list_data = {
 var msg_create_set_msg_type_channel_list_data = {
     title: '[SET MSG TYPE]',
     list: ['ADRS TYPE', 'MMSI', 'MSG TYPE', 'CHANNEL'],
-    key: set_msg_type_key_common,
+    key: msg_common,
     select: ['ALTERNATE', 'BOTH A&B', 'A', 'B'],
     active: 4,
     selectActive: 0
@@ -89,12 +89,21 @@ var msg_rx_list_data = {
     active: 1
 };
 
-var user_settings_key_common = ['ON', 'ON', 'ABM', 'OFF', 'AUTO', 'ON', 'CPA/TCPA ALARM'];
+var user_common = ['ON', 'ON', 'ABM', 'OFF', 'AUTO', 'ON', 'CPA/TCPA ALARM'];
 var user_list_data = {
     title: '[USER SETTINGS]',
     list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
-    key: user_settings_key_common,
+    key: user_common,
     active: 1
+};
+
+var user_key_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_common,
+    select: ['ON', 'OFF'],
+    active: 1,
+    selectActive: 0
 };
 
 var sensor_list_data = {

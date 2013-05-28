@@ -24,6 +24,7 @@ var Route = Backbone.Router.extend({
         'sensor': 'auto',
         'internsal': 'auto',
         'user': 'auto',
+        'user/key': 'auto',
         'intial': 'auto',
         'channel': 'auto',
         'channel/view':'auto',

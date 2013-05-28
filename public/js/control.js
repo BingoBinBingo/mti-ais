@@ -81,6 +81,11 @@ function user() {
     $('li:eq(7) span:eq(0)').css('display', 'none');
 }
 
+function user_key() {
+    render_select_list(user_key_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
 function internsal() {
     render_list(internsal_list_data);
 }
@@ -152,9 +157,10 @@ function enter() {
         //获得当前选择项索引值->修改model中active对应值的值
         var select = $('.select').text();
         var hash = convert_hash() + '_list_data';
+        var hash_common = location.hash.split('/')[0].slice(1) + '_common';
         var data = window[hash];
         var index = data.active - 1;
-        set_msg_type_key_common[index] = select;
+        window[hash_common][index] = select;
         menu();
     } else if (renderType == 'dbl_list') {
         var active = $('.active').last().parent().find('span').first().text().toLocaleLowerCase();
