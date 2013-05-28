@@ -86,6 +86,31 @@ function user_key() {
     $('li:eq(7) span:eq(0)').css('display', 'none');
 }
 
+function user_alarm() {
+    render_select_list(user_alarm_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
+function user_disp() {
+    render_select_list(user_disp_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
+function user_rcvd() {
+    render_select_list(user_rcvd_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
+function user_lr() {
+    render_select_list(user_lr_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
+function user_auto() {
+    render_select_list(user_auto_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
 function internsal() {
     render_list(internsal_list_data);
 }

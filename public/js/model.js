@@ -106,6 +106,51 @@ var user_key_list_data = {
     selectActive: 0
 };
 
+var user_alarm_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_common,
+    select: ['ON', 'OFF'],
+    active: 2,
+    selectActive: 0
+};
+
+var user_disp_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_common,
+    select: ['ALL', 'ABM', 'OFF'],
+    active: 3,
+    selectActive: 1
+};
+
+var user_rcvd_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_common,
+    select: ['ON', 'OFF'],
+    active: 4,
+    selectActive: 0
+};
+
+var user_lr_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_common,
+    select: ['AUTO', 'MANUAL'],
+    active: 5,
+    selectActive: 0
+};
+
+var user_auto_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_common,
+    select: ['ON', 'OFF'],
+    active: 6,
+    selectActive: 0
+};
+
 var sensor_list_data = {
     title: '[SENSOR STATUS]',
     content: 'UTC CLOCK LOST',
