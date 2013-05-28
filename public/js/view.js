@@ -130,3 +130,4 @@ function render_sensor_list(data) {
     var list_html = juicer(sensor_list_tpl, data);
     $('#led').html(list_html);
 }
+

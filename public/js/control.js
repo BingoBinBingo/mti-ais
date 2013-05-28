@@ -76,6 +76,11 @@ function sensor() {
     render_sensor_list(sensor_list_data);
 }
 
+function user() {
+    render_dbl_list(user_list_data);
+    $('li:eq(7) span:eq(0)').css('display', 'none');
+}
+
 function internsal() {
     render_list(internsal_list_data);
 }

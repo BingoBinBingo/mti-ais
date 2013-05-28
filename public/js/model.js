@@ -89,6 +89,14 @@ var msg_rx_list_data = {
     active: 1
 };
 
+var user_settings_key_common = ['ON', 'ON', 'ABM', 'OFF', 'AUTO', 'ON', 'CPA/TCPA ALARM'];
+var user_list_data = {
+    title: '[USER SETTINGS]',
+    list: ['KEY BEEP', 'ALARM BUZZER', 'DISP RCVD MSG', 'RCVD MSG BUZZ', 'LR MODE', 'AUTO SORT', 'CPA'],
+    key: user_settings_key_common,
+    active: 1
+};
+
 var sensor_list_data = {
     title: '[SENSOR STATUS]',
     content: 'UTC CLOCK LOST',
