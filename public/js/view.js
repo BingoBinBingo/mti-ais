@@ -68,6 +68,13 @@ var msg_list_tpl = '<ul>'
     + '</li>'
     + '</ul><span id="under">_</span>';
 
+//sensor专用
+var sensor_list_tpl = '<ul>'
+    + '<li>${title}</li>'
+    + '<li style="text-align: center;">${content}</li>'
+    + '<li style="float: right; margin-top: 160px;">${quit}</li>'
+    + '</ul>';
+
 //渲染数据
 function render_list(data) {
     renderType = 'list';
@@ -115,5 +122,11 @@ function render_num_list(data) {
 function render_msg_list(data) {
     renderType = 'msg_list';
     var list_html = juicer(msg_list_tpl, data);
+    $('#led').html(list_html);
+}
+
+function render_sensor_list(data) {
+    renderType = 'sensor_list';
+    var list_html = juicer(sensor_list_tpl, data);
     $('#led').html(list_html);
 }

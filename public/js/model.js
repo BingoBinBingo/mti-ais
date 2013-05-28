@@ -89,6 +89,12 @@ var msg_rx_list_data = {
     active: 1
 };
 
+var sensor_list_data = {
+    title: '[SENSOR STATUS]',
+    content: 'UTC CLOCK LOST',
+    quit: 'QUIT[MENU]'
+};
+
 var internsal_list_data = {
     title: '[INTERNAL GPS]',
     list: ['LAT:      24°59.7′N',

@@ -72,6 +72,10 @@ function msg_create_set_msg() {
     render_msg_list(msg_create_set_msg_list_data);
 }
 
+function sensor() {
+    render_sensor_list(sensor_list_data);
+}
+
 function internsal() {
     render_list(internsal_list_data);
 }
