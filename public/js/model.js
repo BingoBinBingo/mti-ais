@@ -174,6 +174,48 @@ var intial_list_data = {
     active: 1
 }
 
+var intial_view_mmsg_list_data = {
+    title: '[VIEW MMSI]',
+    list: ['MMSI', 'NAME', 'CALL SING', 'IMO NO.'],
+    key: ['999999999', 'FURUNO', 'FQC3544', '0099999']
+}
+
+var intial_view_int_list_data = {
+    title: '[VIEW INT ANT POS]',
+    list: ['A:', 'B:', 'C:', 'D:'],
+    key: ['45m', '15m', '8m', '7m']
+}
+
+var intial_view_ext_list_data = {
+    title: '[VIEW EXT ANT POS]',
+    list: ['A:', 'B:', 'C:', 'D:'],
+    key: ['45m', '15m', '8m', '7m']
+}
+
+var intial_view_ship_list_data = {
+    title: '[VIEW SHIP TYPE]',
+    content: 'NAV STATUS:0',
+    quit: 'QUIT[MENU]'
+};
+
+var intial_view_io_list_data = {
+    title: '[VIEW I/O PORT]',
+    list: ['VIEW COME PORT', 'VIEW PC PORT', 'VIEW LAN PORT', 'VIEW PRIORITY', 'VIEW QUALITY'],
+    active: 1
+}
+
+var intial_view_io_view_come_list_data = {
+    title: '[VIEW I/O PORT]',
+    list: ['VIEW COME1', 'VIEW COME2', 'VIEW COME3', 'VIEW COME4', 'VIEW COME5', 'VIEW COME6'],
+    active: 1
+}
+
+var intial_view_io_view_pc_list_data = {
+    title: '[VIEW PC PORT]',
+    list: ['MODE:', 'SPEED'],
+    key: ['STANDARD:', '38.4KBPS']
+}
+
 var channel_list_data = {
     title: '[CHANNEL SETTINGS]',
     list: ['VIEW CHANNEL', 'EDIT CHANNEL'],
