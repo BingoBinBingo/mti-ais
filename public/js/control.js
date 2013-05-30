@@ -3,9 +3,9 @@
  * Date: 13-5-13
  * Time: 上午10:44
  */
-String.prototype.replaceAll = function (AFindText,ARepText){
-    raRegExp = new RegExp(AFindText,"g");
-    return this.replace(raRegExp,ARepText);
+String.prototype.replaceAll = function (AFindText, ARepText) {
+    raRegExp = new RegExp(AFindText, "g");
+    return this.replace(raRegExp, ARepText);
 }
 
 function auto() {
@@ -70,6 +70,7 @@ function msg_create_set_msg_type_channel() {
 
 function msg_create_set_msg() {
     render_msg_list(msg_create_set_msg_list_data);
+    $('.set-msg span:eq(' + msg_create_set_msg_list_data.numActive + ')').addClass('under-line');
 }
 
 function sensor() {
@@ -120,7 +121,7 @@ function intial() {
 }
 
 function intial_view() {
-    switch  (intial_list_data.active) {
+    switch (intial_list_data.active) {
         case 1:
             location.hash = '#intial/view/mmsg';
             break;
@@ -160,7 +161,7 @@ function intial_view_io() {
 }
 
 function intial_view_io_view() {
-    switch  (intial_view_io_list_data.active) {
+    switch (intial_view_io_list_data.active) {
         case 1:
             location.hash = '#intial/view/io/view/come';
             break;
@@ -192,16 +193,15 @@ function channel() {
     render_list(channel_list_data);
 }
 
-function channel_view(){
+function channel_view() {
     render_list(channel_view_list_data);
 }
 
-function channel_edit(){
+function channel_edit() {
     render_dbl_list(channel_edit_list_data);
 }
 
-function channel_edit_select()
-{
+function channel_edit_select() {
     render_dbllong_list(channel_edit_select_list_data);
 }
 
@@ -242,6 +242,49 @@ function get_data() {
     var hash = convert_hash() + '_list_data';
     var data = window[hash];
     return data;
+}
+
+//在 SET MSG 的编辑框中，针对上下左右的方法集合
+function msg_list_action(method) {
+    var numActive = msg_create_set_msg_list_data.numActive;
+    var char = msg_create_set_msg_list_data.content[numActive];
+    var content = msg_create_set_msg_list_data.content;
+    if (method == 'up') {
+        var code = char.charCodeAt(0);
+        if (code < 96) {
+            code++
+        } else {
+            code = 65
+        };
+        var str = String.fromCharCode(code);
+        msg_create_set_msg_list_data.content[numActive] = str;
+    } else if (method == 'down'){
+        var code = char.charCodeAt(0);
+        if (code > 65) {
+            code--;
+        } else {
+            code = 96;
+        };
+        var str = String.fromCharCode(code);
+        msg_create_set_msg_list_data.content[numActive] = str;
+    } else if (method == 'left') {
+        if(numActive > 0) {
+            numActive--;
+        }
+        msg_create_set_msg_list_data.numActive = numActive;
+        $('.under-line').removeClass('under-line');
+        $('.set-msg span:eq(' + numActive + ')').addClass('under-line');
+    } else if (method == 'right') {
+        if(numActive < content.length - 1) {
+            numActive++;
+        } else if (numActive == content.length - 1){
+            msg_create_set_msg_list_data.content.push('A');
+            numActive++;
+        }
+        msg_create_set_msg_list_data.numActive = numActive;
+        $('.under-line').removeClass('under-line');
+        $('.set-msg span:eq(' + numActive + ')').addClass('under-line');
+    }
 }
 
 //enter事件
@@ -289,7 +332,7 @@ function menu() {
     if (hash == '#msg/create/set/msg/type' || hash == '#msg/create/set/msg') {
         location.hash = '#msg/create';
     } else if (hash == '#intial/view/mmsg' || hash == '#intial/view/int' || hash == '#intial/view/ext'
-    || hash == '#intial/view/ship' || hash == '#intial/view/io'
+        || hash == '#intial/view/ship' || hash == '#intial/view/io'
         ) {
         location.hash = '#intial';
     } else if (hash == '#intial/view/io/view/come' || hash == '#intial/view/io/view/pc'
@@ -339,7 +382,7 @@ function up() {
             var data = get_data();
             var list = data.key[1].split('');
             var numActive = Math.round(list[data.numActive]);
-            if(numActive == 9) {
+            if (numActive == 9) {
                 numActive = 0;
             } else {
                 numActive++;
@@ -348,8 +391,13 @@ function up() {
             data.key[1] = list.toString().replaceAll(',', '');
             auto();
             break;
+        case 'msg_list':
+            msg_list_action('up');
+            auto();
+            break;
     }
 }
+
 
 //down事件
 function down() {
@@ -384,13 +432,17 @@ function down() {
             var data = get_data();
             var list = data.key[1].split('');
             var numActive = Math.round(list[data.numActive]);
-            if(numActive == 0) {
+            if (numActive == 0) {
                 numActive = 9;
             } else {
                 numActive--;
             }
             list[data.numActive] = numActive;
             data.key[1] = list.toString().replaceAll(',', '');
+            auto();
+            break;
+        case 'msg_list':
+            msg_list_action('down');
             auto();
             break;
     }
@@ -408,6 +460,10 @@ function left() {
             var num = lastActive * 2 + 1;
             var pos = $('span:eq(' + num + ')').offset();
             $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
+        case 'msg_list':
+            msg_list_action('left');
+            auto();
+            break;
     }
 }
 
@@ -423,6 +479,10 @@ function right() {
             var num = lastActive * 2 + 1;
             var pos = $('span:eq(' + num + ')').offset();
             $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
+        case 'msg_list':
+            msg_list_action('right');
+            auto();
+            break;
     }
 }
 
@@ -451,4 +511,4 @@ $('#right').click(function () {
 });
 
 //todo:
-//
+//set msg

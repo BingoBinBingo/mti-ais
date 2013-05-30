@@ -71,7 +71,7 @@ var msg_create_set_msg_type_channel_list_data = {
 
 var msg_create_set_msg_list_data = {
     title: '[SET MSG]',
-    content: '',
+    content: ['A', 'F', 'Y'],
     numActive: 0
 };
 

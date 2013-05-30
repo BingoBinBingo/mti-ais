@@ -64,9 +64,13 @@ var msg_list_tpl = '<ul>'
     + '${title}'
     + '</li>'
     + '<li class="set-msg">'
-    + '<p>sfasfsfdasfasfsfd.asf.sdaffffaaaaaaaa</p>'
+    + '<p>'
+    + '{@each content as i, index}'
+    + '<span>${i}</span>'
+    + '{@/each}'
+    + '</p>'
     + '</li>'
-    + '</ul><span id="under">_</span>';
+    + '</ul>';
 
 //sensor专用
 var sensor_list_tpl = '<ul>'
