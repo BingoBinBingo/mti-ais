@@ -124,6 +124,74 @@ function intial() {
     render_list(intial_list_data);
 }
 
+function intial_view() {
+    switch  (intial_list_data.active) {
+        case 1:
+            location.hash = '#intial/view/mmsg';
+            break;
+        case 2:
+            location.hash = '#intial/view/int';
+            break;
+        case 3:
+            location.hash = '#intial/view/ext';
+            break;
+        case 4:
+            location.hash = '#intial/view/ship';
+            break;
+        case 5:
+            location.hash = '#intial/view/io';
+            break;
+    }
+}
+
+function intial_view_mmsg() {
+    render_dbl_list(intial_view_mmsg_list_data);
+}
+
+function intial_view_int() {
+    render_dbl_list(intial_view_int_list_data);
+}
+
+function intial_view_ext() {
+    render_dbl_list(intial_view_ext_list_data);
+}
+
+function intial_view_ship() {
+    render_sensor_list(intial_view_ship_list_data);
+}
+
+function intial_view_io() {
+    render_list(intial_view_io_list_data);
+}
+
+function intial_view_io_view() {
+    switch  (intial_view_io_list_data.active) {
+        case 1:
+            location.hash = '#intial/view/io/view/come';
+            break;
+        case 2:
+            location.hash = '#intial/view/io/view/pc';
+            break;
+        case 3:
+            location.hash = '#intial/view/io/view/lan';
+            break;
+        case 4:
+            location.hash = '#intial/view/io/view/priority';
+            break;
+        case 5:
+            location.hash = '#intial/view/io/view/quality';
+            break;
+    }
+}
+
+function intial_view_io_view_come() {
+    render_list(intial_view_io_view_come_list_data);
+}
+
+function intial_view_io_view_pc() {
+    render_dbl_list(intial_view_io_view_pc_list_data);
+}
+
 //channel setting 菜单
 function channel() {
     render_list(channel_list_data);
