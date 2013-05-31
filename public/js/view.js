@@ -3,6 +3,16 @@
  * Date: 13-5-13
  * Time: 上午10:44
  */
+//双列列表+下划线:用于数值改变 long版本
+var numlong_list_tpl = '<ul>'
+    + '<li>'
+    + '${title}'
+    + '</li>'
+    + '{@each list as i, index}'
+    + '<li><span style="width: 180px;display: inline-block;">${i}</span><span>${key[index]}</span></li>'
+    + '{@/each}'
+    + '</ul><span id="under">_</span>';
+
 //单列列表：用于菜单的显示
 var list_tpl = '<ul>'
     + '<li>'
@@ -58,21 +68,6 @@ var select_list_tpl = '<ul>'
     + '{@/each}'
     + '</ul>';
 
-var selectYesNo_list_tpl = '<ul>'
-    + '<li>'
-    + '${title}'
-    + '</li>'
-    + '{@each list as i, index}'
-    + '<li><span style="width: 120px;display: inline-block;">${i}</span><span>${key[index]}</span></li>'
-    + '{@/each}'
-    + '</ul>'
-    + '<ul class="select-box">'
-    + '{@each select as j}'
-    + '<li>${j}</li>'
-    + '{@/each}'
-    + '</ul>';
-
-
 //双列列表+下划线:用于数值改变
 var num_list_tpl = '<ul>'
     + '<li>'
@@ -83,16 +78,26 @@ var num_list_tpl = '<ul>'
     + '{@/each}'
     + '</ul><span id="under">_</span>';
 
-
-//双列列表+下划线:用于数值改变 long版本
-var numlong_list_tpl = '<ul>'
+//双列列表+下划线:用于数值改变
+var msg_list_tpl = '<ul>'
     + '<li>'
     + '${title}'
     + '</li>'
-    + '{@each list as i, index}'
-    + '<li><span style="width: 180px;display: inline-block;">${i}</span><span>${key[index]}</span></li>'
+    + '<li class="set-msg">'
+    + '<p>'
+    + '{@each content as i, index}'
+    + '<span>${i}</span>'
     + '{@/each}'
-    + '</ul><span id="under">_</span>';
+    + '</p>'
+    + '</li>'
+    + '</ul>';
+
+//sensor专用
+var sensor_list_tpl = '<ul>'
+    + '<li>${title}</li>'
+    + '<li style="text-align: center;">${content}</li>'
+    + '<li style="float: right; margin-top: 160px;">${quit}</li>'
+    + '</ul>';
 
 
 //渲染数据
