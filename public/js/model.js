@@ -27,6 +27,13 @@ var msg_create_list_data = {
     active: 1
 };
 
+var msg_create_send_list_data = {
+    title: '[CREATE MSG]',
+    list: ['SET MSG TYPE', 'SET MSG', 'SEND MSG'],
+    value: 0,
+    active: 3
+};
+
 var msg_common = ['BROAD CAST', '412863000', 'SATETY', 'BOTH B'];
 var msg_create_set_msg_type_list_data = {
     title: '[SET MSG TYPE]',
@@ -71,7 +78,7 @@ var msg_create_set_msg_type_channel_list_data = {
 
 var msg_create_set_msg_list_data = {
     title: '[SET MSG]',
-    content: ['A', 'F', 'Y'],
+    content: ['A'],
     numActive: 0
 };
 

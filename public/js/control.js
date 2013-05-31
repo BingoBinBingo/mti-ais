@@ -40,6 +40,10 @@ function msg_create() {
     render_list(msg_create_list_data);
 }
 
+function msg_create_send() {
+    render_yes_no_list(msg_create_send_list_data);
+}
+
 function msg_create_set() {
     if (lastActive == 1) {
         location.hash = '#msg/create/set/msg/type';
@@ -244,6 +248,17 @@ function get_data() {
     return data;
 }
 
+function send_msg() {
+    var msg_mmsi = msg_common[1];
+    var msg_content = msg_create_set_msg_list_data.content.join('');
+    $.post('/mti-nav-thinkphp/index/sendaismsg', {
+        'mmsi': msg_mmsi,
+        'content': msg_content
+    }, function (data) {
+        console.log(data);
+    });
+}
+
 //在 SET MSG 的编辑框中，针对上下左右的方法集合
 function msg_list_action(method) {
     var numActive = msg_create_set_msg_list_data.numActive;
@@ -255,29 +270,31 @@ function msg_list_action(method) {
             code++
         } else {
             code = 65
-        };
+        }
+        ;
         var str = String.fromCharCode(code);
         msg_create_set_msg_list_data.content[numActive] = str;
-    } else if (method == 'down'){
+    } else if (method == 'down') {
         var code = char.charCodeAt(0);
         if (code > 65) {
             code--;
         } else {
             code = 96;
-        };
+        }
+        ;
         var str = String.fromCharCode(code);
         msg_create_set_msg_list_data.content[numActive] = str;
     } else if (method == 'left') {
-        if(numActive > 0) {
+        if (numActive > 0) {
             numActive--;
         }
         msg_create_set_msg_list_data.numActive = numActive;
         $('.under-line').removeClass('under-line');
         $('.set-msg span:eq(' + numActive + ')').addClass('under-line');
     } else if (method == 'right') {
-        if(numActive < content.length - 1) {
+        if (numActive < content.length - 1) {
             numActive++;
-        } else if (numActive == content.length - 1){
+        } else if (numActive == content.length - 1) {
             msg_create_set_msg_list_data.content.push('A');
             numActive++;
         }
@@ -311,6 +328,12 @@ function enter() {
         }
     } else if (renderType == 'num_list') {
         menu();
+    } else if (renderType == 'yes_no_list') {
+        if (msg_create_send_list_data.value == 0) {
+            send_msg();
+        } else {
+            menu();
+        }
     } else {
         lastActive = $('li').index($('.active'));
         var active = $('.active').text().toLowerCase();
@@ -464,6 +487,13 @@ function left() {
             msg_list_action('left');
             auto();
             break;
+        case 'yes_no_list':
+            var value = msg_create_send_list_data.value;
+            if (value == 1) {
+                msg_create_send_list_data.value = 0;
+            }
+            auto();
+            break;
     }
 }
 
@@ -481,6 +511,13 @@ function right() {
             $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
         case 'msg_list':
             msg_list_action('right');
+            auto();
+            break;
+        case 'yes_no_list':
+            var value = msg_create_send_list_data.value;
+            if (value == 0) {
+                msg_create_send_list_data.value = 1;
+            }
             auto();
             break;
     }

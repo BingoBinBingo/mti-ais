@@ -13,6 +13,16 @@ var list_tpl = '<ul>'
     + '{@/each}'
     + '</ul>';
 
+//Yes Or No 单列列表：用于菜单的显示
+var list_yes_no_tpl = '<ul>'
+    + '<li>'
+    + '${title}'
+    + '</li>'
+    + '{@each list as i}'
+    + '<li>${i}</li>'
+    + '{@/each}'
+    + '</ul><div class="yes-no-box"><p>SEND MESSAGE ARE YOU SURE</p><p><span>YES</span><span>NO</span></p></div>';
+
 //双列列表:用于msg tx与rx的显示
 var dbl_list_tpl = '<ul>'
     + '<li>'
@@ -85,6 +95,14 @@ function render_list(data) {
     var list_html = juicer(list_tpl, data);
     $('#led').html(list_html);
     $('li:eq(' + data.active +')').addClass('active');
+}
+
+function render_yes_no_list(data) {
+    renderType = 'yes_no_list';
+    var list_html = juicer(list_yes_no_tpl, data);
+    $('#led').html(list_html);
+    $('li:eq(' + data.active +')').addClass('active');
+    $('span:eq(' + data.value +')').addClass('active');
 }
 
 function render_dbl_list(data) {

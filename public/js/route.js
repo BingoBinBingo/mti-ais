@@ -17,6 +17,7 @@ var Route = Backbone.Router.extend({
         'msg/create/set/msg/type/msg': 'auto',
         'msg/create/set/msg/type/channel': 'auto',
         'msg/create/set/msg': 'auto',
+        'msg/create/send': 'auto',
         'msg/tx': 'auto',
         'msg/tx/:id': 'msg_tx_query',
         'msg/rx': 'auto',

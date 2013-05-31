@@ -113,3 +113,17 @@ li {
 .under-line {
     text-decoration: underline;
 }
+
+.yes-no-box {
+    width: 120px;
+    border: 1px solid;
+    margin: 0 auto;
+}
+
+.yes-no-box p {
+    text-align: center;
+}
+
+.yes-no-box span {
+    margin-left: 10px;
+}
