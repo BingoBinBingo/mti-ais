@@ -49,7 +49,18 @@ var Route = Backbone.Router.extend({
         'channel': 'auto',
         'channel/view':'auto',
         'channel/edit':'auto',
-        'diagnostics': 'auto'
+        'channel/edit/select':'auto',
+        'channel/edit/select/cha':'auto',
+        'channel/edit/select/chb':'auto',
+        'diagnostics': 'auto',
+        'diagnostics/monitor':'auto',
+        'diagnostics/transponder':'auto',
+        'diagnostics/pwr':'auto',
+        'diagnostics/tx':'auto',
+        'diagnostics/memory':'auto',
+        'diagnostics/activate':'auto',
+        'diagnostics/transponder/monitor':'auto',
+        'diagnostics/transponder/gps':'auto'
     },
 
     auto: function() {

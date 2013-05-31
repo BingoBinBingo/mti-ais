@@ -58,6 +58,21 @@ var select_list_tpl = '<ul>'
     + '{@/each}'
     + '</ul>';
 
+var selectYesNo_list_tpl = '<ul>'
+    + '<li>'
+    + '${title}'
+    + '</li>'
+    + '{@each list as i, index}'
+    + '<li><span style="width: 120px;display: inline-block;">${i}</span><span>${key[index]}</span></li>'
+    + '{@/each}'
+    + '</ul>'
+    + '<ul class="select-box">'
+    + '{@each select as j}'
+    + '<li>${j}</li>'
+    + '{@/each}'
+    + '</ul>';
+
+
 //双列列表+下划线:用于数值改变
 var num_list_tpl = '<ul>'
     + '<li>'
@@ -68,26 +83,17 @@ var num_list_tpl = '<ul>'
     + '{@/each}'
     + '</ul><span id="under">_</span>';
 
-//双列列表+下划线:用于数值改变
-var msg_list_tpl = '<ul>'
+
+//双列列表+下划线:用于数值改变 long版本
+var numlong_list_tpl = '<ul>'
     + '<li>'
     + '${title}'
     + '</li>'
-    + '<li class="set-msg">'
-    + '<p>'
-    + '{@each content as i, index}'
-    + '<span>${i}</span>'
+    + '{@each list as i, index}'
+    + '<li><span style="width: 180px;display: inline-block;">${i}</span><span>${key[index]}</span></li>'
     + '{@/each}'
-    + '</p>'
-    + '</li>'
-    + '</ul>';
+    + '</ul><span id="under">_</span>';
 
-//sensor专用
-var sensor_list_tpl = '<ul>'
-    + '<li>${title}</li>'
-    + '<li style="text-align: center;">${content}</li>'
-    + '<li style="float: right; margin-top: 160px;">${quit}</li>'
-    + '</ul>';
 
 //渲染数据
 function render_list(data) {
@@ -153,3 +159,29 @@ function render_sensor_list(data) {
     $('#led').html(list_html);
 }
 
+//判断YES NO的Select
+function render_selectYesNo_list(data)
+{
+
+}
+
+//function render_numlong_list(data) {
+//    renderType = 'num_list';
+//    var list_html = juicer(numlong_list_tpl, data);
+//    $('#led').html(list_html);
+//    var num = lastActive * 2 + 1;
+//    var pos = $('span:eq(' + num + ')').offset();
+//    $('#under').offset({left: pos.left + data.numActive * 8, top: pos.top})
+//    $('.active').removeClass('active');
+//}
+
+//自设定lastActive
+function render_numlong_list(data,lastActive) {
+    renderType = 'num_list';
+    var list_html = juicer(numlong_list_tpl, data);
+    $('#led').html(list_html);
+    var num = lastActive * 2 + 1;
+    var pos = $('span:eq(' + num + ')').offset();
+    $('#under').offset({left: pos.left + data.numActive * 8, top: pos.top})
+    $('.active').removeClass('active');
+}

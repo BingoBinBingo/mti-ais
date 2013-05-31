@@ -249,12 +249,96 @@ var channel_edit_list_data = {
     key: ['0'],
     active: 1
 };
+//channel 的 Key
+var channel_edit_select_key_common = ['','12.5W','2087','2087','TX/RX','TX/RX','1NM'];
 
 //channel view edit_select 菜单
 var channel_edit_select_list_data ={
     title: '[EDIT CHANNEL]',
     list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
-    key: ['','12.5W','2087','2087','TX/RX','TX/RX','1NM'],
-    active: 2
+    key:channel_edit_select_key_common,
+    active: 3
 };
 
+//channel view edit_ch-a 菜单
+var channel_edit_select_cha_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
+    key:channel_edit_select_key_common,
+    numActive: 0
+};
+
+//channel view edit_ch-b 菜单
+var channel_edit_select_chb_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
+    key:channel_edit_select_key_common,
+    numActive: 0
+};
+
+var channel_edit_select_zone_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
+    key:channel_edit_select_key_common,
+    numActive: 0
+}
+
+//DIAGNOST ICS MONITOR 菜单
+var diagnostics_monitor_list_data = {
+    title:'[MONITOR TEST]',
+    list:['BOOT NO:2450020-XX-XX','PROG NO','ROM','SDRAM','PORT','KEY'],
+    key:['','','OK','OK','OK'],
+    active:3
+}
+
+var diagnostics_transponder_list_data = {
+    title:'[MONITOR TEST]',
+    list:['MONITOR TEST','GPS TEST'],
+    active:1
+}
+
+var diagnostics_pwr_list_data = {
+    title:'[PWR ON/OFF HISTORY]',
+    list:['POWER-ON　　17/MAY/2009','　　　　　　05:35:34','PWR-OFF 　　17/MAY/2009','　　　　　　05:35:57','PWR_ON　　　17/MAY/2009','　　　　　　05:35:59']
+}
+
+var diagnostics_tx_list_data = {
+    title:'[PWR ON/OFF HISTORY]',
+    list:['TX-ON　　 17/MAY/2009','　　　　　05:35:34','TX-OFF　　17/MAY/2009','　　　　　05:35:57','TX_ON 　　17/MAY/2009','　　　　　05:35:59','　','　　　PAGE(1/2)[▼]QUIT[MENU]']
+}
+
+var diagnostics_memory_list_data = {
+    title:'[CHANNEL SETTINGS]',
+    list:['MONITOR CLEAR','SET USER DEFAULT','GPS COLD START'],
+    active:1
+}
+
+var diagnostics_activate_list_data = {
+    title:'[PWR ON/OFF HISTORY]',
+    list:['DEVICE ID','　　　　　XX-XX-XX-XX-XX-XX','KEY','　　　　　--------']
+}
+
+var diagnostics_for_list_data = {
+    title:'[MONITOR TEST]',
+    list:['MONITOR TEST','GPS TEST'],
+    active:1
+}
+
+var diagnostics_transponder_monitor_list_data = {
+    title:'[VIEW ROT]',
+    list:['PROGRAM NO','　　　　　　　2450018-XX.XX','MAIN ROM　　　OK','MAIN RAM　　　OK','SUB RAM　　 　OK','MOT HW　　　　X']
+}
+
+var diagnostics_transponder_gps_list_data = {
+    title:'[GPS TEST]',
+    list:['PROGRAM NO','　　　　　48502XX','TEST　　　OK']
+}
+
+var diagnostics_memory_monitor_list_data = {
+    title: '[CHANNEL SETTINGS]',
+    list: ['MONITOR CLEAR', 'SET USER DEFAULT', 'GPS COLD STAR'],
+    key: set_msg_type_key_common,
+    select: ['YES', 'NO'],
+    active: 1,
+    selectActive: 0
+};

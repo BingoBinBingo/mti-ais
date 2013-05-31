@@ -84,7 +84,6 @@ exports.compile = function (id, source) {
         id = anonymous;
     }
 
-    
     try {
         
         var Render = _compile(source, isDebug);
@@ -100,7 +99,6 @@ exports.compile = function (id, source) {
     
     
     function render (data) {
-        
         try {
             
             return new Render(data) + '';
@@ -229,8 +227,6 @@ var _debug = function (e) {
     
     return error;
 };
-
-
 
 // 模板编译器
 var _compile = (function () {
