@@ -84,7 +84,7 @@ var msg_create_set_msg_list_data = {
 
 var msg_tx_list_data = {
     title: '[TX LOG]',
-    list: [['13-APR-25', '1', '<br>', 'TO:412863000', 'S-ABM']],
+    list: [['13-APR-25　　　　　 1 '+ '<br> ' + 'TO:412863000　　　　S-ABM'],['13-APR-25　　　　　 1 '+ '<br> ' + 'TO:412863000　　　　S-ABM']],
     select: ['BROAD CAST', 'ADRS CAST'],
     active: 1,
     selectActive: 0
@@ -92,8 +92,7 @@ var msg_tx_list_data = {
 
 var msg_rx_list_data = {
     title: '[TX LOG]',
-    list: [['13-APR-25', '1', '<br>', 'TO:412863000', 'S-ABM']],
-    active: 1
+    list: [['13-APR-25　　　　　 1 '+ '<br> ' + 'TO:412863000　　　　S-ABM'],['13-APR-25　　　　　 1 '+ '<br> ' + 'TO:412863000　　　　S-ABM'],['13-MAY-22　　　　　 1 '+ '<br> ' + 'FROM:NULL']]
 };
 
 var user_common = ['ON', 'ON', 'ABM', 'OFF', 'AUTO', 'ON', 'CPA/TCPA ALARM'];
@@ -265,7 +264,9 @@ var channel_edit_select_cha_list_data = {
     title: '[EDIT CHANNEL]',
     list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
     key:channel_edit_select_key_common,
-    numActive: 0
+    numActive: 0,
+    active:2
+
 };
 
 //channel view edit_ch-b 菜单
@@ -273,20 +274,23 @@ var channel_edit_select_chb_list_data = {
     title: '[EDIT CHANNEL]',
     list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
     key:channel_edit_select_key_common,
-    numActive: 0
+    numActive: 0,
+    active:3
 };
 
 var channel_edit_select_zone_list_data = {
     title: '[EDIT CHANNEL]',
     list: ['FROM MMSI: ___________', 'POWER:','　　　　　　CH-A:','　　　　　　CH-B:','MODE　　　　CH-A:','　　　　　　CH-B:','Zone','CH NO'],
     key:channel_edit_select_key_common,
-    numActive: 0
+    numActive: 0,
+    active:6
 }
 
 //DIAGNOST ICS MONITOR 菜单
 var diagnostics_monitor_list_data = {
     title:'[MONITOR TEST]',
-    list:['BOOT NO:2450020-XX-XX','PROG NO','ROM','SDRAM','PORT','KEY'],
+    list:['BOOT NO:','PROG NO','ROM','SDRAM','PORT','KEY'],
+    threelist:['　　　　　2450020-XX-XX','　　　　　2450020-XX-XX','　　　　CONT:　53','　　　　DIM:　5','','PUSH KEY'],
     key:['','','OK','OK','OK'],
     active:3
 }
@@ -336,9 +340,65 @@ var diagnostics_transponder_gps_list_data = {
 
 var diagnostics_memory_monitor_list_data = {
     title: '[CHANNEL SETTINGS]',
-    list: ['MONITOR CLEAR', 'SET USER DEFAULT', 'GPS COLD STAR'],
-    key: set_msg_type_key_common,
-    select: ['YES', 'NO'],
-    active: 1,
-    selectActive: 0
+    list:['MONITOR CLEAR','SET USER DEFAULT','GPS COLD START'],
+    context:'MONITOR CLEAR ARE YOU SURE?',
+    value: 0,
+    active: 1
 };
+
+var diagnostics_memory_set_list_data = {
+    title: '[CHANNEL SETTINGS]',
+    list:['MONITOR CLEAR','SET USER DEFAULT','GPS COLD START'],
+    context:'SET USER DEFAULT CLEAR ARE YOU SURE?',
+    value: 0,
+    active: 2
+};
+
+var diagnostics_memory_gps_list_data = {
+    title: '[CHANNEL SETTINGS]',
+    list:['MONITOR CLEAR','SET USER DEFAULT','GPS COLD START'],
+    context:'GPS COLD START ARE YOU SURE?',
+    value: 0,
+    active: 3
+};
+
+var set_change_latlon_key = ['','','0°00.0′N','0°00.0′E','','0°00.0′N','0°00.0′E'];
+
+var channel_edit_select_change_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['CH AREA','RIGHT TOP:','LAT','LON','LEFT BOTTOM:','LAT:','LON:'],
+    key:set_change_latlon_key,
+    active:3
+}
+
+var channel_edit_select_change_lat_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['CH AREA','RIGHT TOP:','LAT','LON','LEFT BOTTOM:','LAT:','LON:'],
+    key:set_change_latlon_key,
+    numActive: 0,
+    active:2
+}
+
+var channel_edit_select_change_lon_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['CH AREA','RIGHT TOP:','LAT','LON','LEFT BOTTOM:','LAT:','LON:'],
+    key:set_change_latlon_key,
+    numActive: 0,
+    active:3
+}
+
+var channel_edit_select_change_lat1_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['CH AREA','RIGHT TOP:','LAT','LON','LEFT BOTTOM:','LAT:','LON:'],
+    key:set_change_latlon_key,
+    numActive: 0,
+    active:5
+}
+
+var channel_edit_select_change_lon1_list_data = {
+    title: '[EDIT CHANNEL]',
+    list: ['CH AREA','RIGHT TOP:','LAT','LON','LEFT BOTTOM:','LAT:','LON:'],
+    key:set_change_latlon_key,
+    numActive: 0,
+    active:6
+}

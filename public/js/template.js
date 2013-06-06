@@ -392,11 +392,7 @@ var _compile = (function () {
                     tempCode += html($1);
                 }
             }
-            
-
         });
-        
-        
         
         code = tempCode;
         

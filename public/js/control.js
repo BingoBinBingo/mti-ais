@@ -18,6 +18,19 @@ function auto() {
     }
 }
 
+var GetLength = function(str) {
+    ///<summary>获得字符串实际长度，中文2，英文1</summary>
+    ///<param name="str">要获得长度的字符串</param>
+    var realLength = 0, len = str.length, charCode = -1;
+    for (var i = 0; i < len; i++) {
+        charCode = str.charCodeAt(i);
+        if (charCode >= 0 && charCode <= 128) realLength += 1;
+        else realLength += 2;
+    }
+    return realLength;
+};
+
+
 //主菜单
 function index() {
     render_list(index_list_data);
@@ -219,6 +232,52 @@ function channel_edit_select_chb()
     render_numlong_list(channel_edit_select_chb_list_data,3);
 }
 
+function channel_edit_select_zone()
+{
+    render_numlong_list(channel_edit_select_chb_list_data,6);
+}
+
+function diagnostics_memory_monitor()
+{
+    render_list_yes_no_channel_tpl(diagnostics_memory_monitor_list_data);
+}
+
+function diagnostics_memory_set()
+{
+    render_list_yes_no_channel_tpl(diagnostics_memory_set_list_data);
+}
+
+function diagnostics_memory_gps()
+{
+    render_list_yes_no_channel_tpl(diagnostics_memory_gps_list_data);
+}
+
+function channel_edit_select_change()
+{
+    render_dbl_list(channel_edit_select_change_list_data);
+}
+
+
+function channel_edit_select_change_lat()
+{
+    render_numlatlon_list(channel_edit_select_change_lat_list_data,2);
+}
+
+function channel_edit_select_change_lon()
+{
+    render_numlatlon_list(channel_edit_select_change_lon_list_data,3);
+}
+
+function channel_edit_select_change_lat1()
+{
+    render_numlatlon_list(channel_edit_select_change_lat1_list_data,5);
+}
+
+function channel_edit_select_change_lon1()
+{
+    render_numlatlon_list(channel_edit_select_change_lon1_list_data,6);
+}
+
 //=========================================CHANNEL菜单 END ===================================
 
 function diagnostics() {
@@ -226,7 +285,7 @@ function diagnostics() {
 }
 
 function diagnostics_monitor(){
-    render_dbl_list(diagnostics_monitor_list_data);
+    render_treble_list(diagnostics_monitor_list_data);
 }
 
 function diagnostics_transponder(){
@@ -262,6 +321,7 @@ function diagnostics_transponder_gps()
 {
     render_list(diagnostics_transponder_gps_list_data);
 }
+
 
 //检查是否有active存在
 //用以判断上下键是否控制active选中项
@@ -331,7 +391,6 @@ function msg_list_action(method) {
         } else {
             code = 96;
         }
-        ;
         var str = String.fromCharCode(code);
         msg_create_set_msg_list_data.content[numActive] = str;
     } else if (method == 'left') {
@@ -352,6 +411,16 @@ function msg_list_action(method) {
         $('.under-line').removeClass('under-line');
         $('.set-msg span:eq(' + numActive + ')').addClass('under-line');
     }
+}
+
+
+//change事件
+function change(){
+    location.hash = '#channel/edit/select/change';
+}
+
+function change2(){
+    location.hash = '#channel/edit/select';
 }
 
 //enter事件
@@ -376,6 +445,10 @@ function enter() {
         }
         if (location.hash.concat("　") || location.hash.concat("-") || location.hash.concat(":"))
         {
+            if(location.hash.indexOf("lat:") > 0 || location.hash.indexOf("lon:") > 0)
+            {
+                location.hash = location.hash.replace(/:/g,'1');
+            }
             location.hash = location.hash.replace(/　/g, '').replace(/-/g, '').replace(/:/g,'');
         }
         else {
@@ -384,7 +457,10 @@ function enter() {
     } else if (renderType == 'num_list') {
         menu();
     } else if (renderType == 'yes_no_list') {
-        if (msg_create_send_list_data.value == 0) {
+        var hash = convert_hash() + '_list_data';
+        var data = window[hash];
+        var value = data.value;
+        if (value == 0) {
             send_msg();
         } else {
             menu();
@@ -441,8 +517,28 @@ function up() {
                     $('.active').removeClass('active');
                     $('li:eq(' + data.active + ')').addClass('active');
                 } else if (get_Active_localName() == 'span') {
+                    if(data.active == 2 && $('.active').text().indexOf("′N") == 6)
+                    { change2() }
+                    else
+                    {
+                        $('.active').removeClass('active');
+                        $('li:eq(' + data.active + ') span').last().addClass('active');
+                    }
+                }
+            }
+            break;
+        case 'treble_list':
+            if (has_active()) {
+                var hash = convert_hash() + '_list_data';
+                var data = window[hash];
+                if (data.active > 1) data.active--;
+                //判断界面是单列还是双列
+                if (get_Active_localName() == 'li') {
                     $('.active').removeClass('active');
-                    $('li:eq(' + data.active + ') span').last().addClass('active');
+                    $('li:eq(' + data.active + ')').addClass('active');
+                } else if (get_Active_localName() == 'span') {
+                    $('.active').removeClass('active');
+                    $('li:eq(' + data.active + ') span').eq(1).addClass('active');
                 }
             }
             break;
@@ -458,7 +554,7 @@ function up() {
             break;
         case 'num_list':
             var data = get_data();
-            var list = data.key[1].split('');
+            var list = data.key[data.active].split('');
             var numActive = Math.round(list[data.numActive]);
             if (numActive == 9) {
                 numActive = 0;
@@ -466,7 +562,7 @@ function up() {
                 numActive++;
             }
             list[data.numActive] = numActive;
-            data.key[1] = list.toString().replaceAll(',', '');
+            data.key[data.active] = list.toString().replaceAll(',', '');
             auto();
             break;
         case 'msg_list':
@@ -491,8 +587,28 @@ function down() {
                     $('.active').removeClass('active');
                     $('li:eq(' + data.active + ')').addClass('active');
                 } else if (get_Active_localName() == 'span') {
+                    if($('.active').text().indexOf("NM") == 1)
+                    { change() }
+                    else
+                    {
+                        $('.active').removeClass('active');
+                        $('li:eq(' + data.active + ') span').last().addClass('active');
+                    }
+                }
+            }
+            break;
+        case 'treble_list':
+            if (has_active()) {
+                var hash = convert_hash() + '_list_data';
+                var data = window[hash];
+                if (data.active < data.list.length) data.active++;
+                //判断界面是单列还是双列
+                if (get_Active_localName() == 'li') {
                     $('.active').removeClass('active');
-                    $('li:eq(' + data.active + ') span').last().addClass('active');
+                    $('li:eq(' + data.active + ')').addClass('active');
+                } else if (get_Active_localName() == 'span') {
+                    $('.active').removeClass('active');
+                    $('li:eq(' + data.active + ') span').eq(1).addClass('active');
                 }
             }
             break;
@@ -508,7 +624,7 @@ function down() {
             break;
         case 'num_list':
             var data = get_data();
-            var list = data.key[1].split('');
+            var list = data.key[data.active].split('');
             var numActive = Math.round(list[data.numActive]);
             if (numActive == 0) {
                 numActive = 9;
@@ -516,7 +632,7 @@ function down() {
                 numActive--;
             }
             list[data.numActive] = numActive;
-            data.key[1] = list.toString().replaceAll(',', '');
+            data.key[data.active] = list.toString().replaceAll(',', '');
             auto();
             break;
         case 'msg_list':
@@ -531,7 +647,7 @@ function left() {
         case 'num_list':
             var hash = convert_hash() + '_list_data';
             var data = window[hash];
-            var list = data.key[1].split('');
+            var list = data.key[data.active].split('');
             if (data.numActive > 0) {
                 data.numActive--;
             }
@@ -543,9 +659,11 @@ function left() {
             auto();
             break;
         case 'yes_no_list':
-            var value = msg_create_send_list_data.value;
+            var hash = convert_hash() + '_list_data';
+            var data = window[hash];
+            var value = data.value;
             if (value == 1) {
-                msg_create_send_list_data.value = 0;
+                data.value = 0;
             }
             auto();
             break;
@@ -557,21 +675,44 @@ function right() {
         case 'num_list':
             var hash = convert_hash() + '_list_data';
             var data = window[hash];
-            var list = data.key[1].split('');
-            if (data.numActive < list.length - 1) {
-                data.numActive++;
+            var list = data.key[data.active].split('');
+            if(list[1] != "N" && list[2] != "M")
+            {
+                if(list[data.numActive + 1] == "°" || list[data.numActive + 1] == ".")
+                {
+                    if (data.numActive < list.length - 1) {
+                        data.numActive = data.numActive + 2;
+                    }
+                }
+                else
+                {
+                    if (data.numActive < list.length - 1) {
+                        data.numActive++;
+                    }
+                }
             }
             var num = lastActive * 2 + 1;
             var pos = $('span:eq(' + num + ')').offset();
-            $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
+            if(list[data.numActive -1] == "°")
+            {
+                var tmp = list.slice(0,[data.numActive]);
+                $('#under').offset({left: pos.left + 8 * GetLength(tmp), top: pos.top})
+            }
+            else
+            {
+                $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
+            }
+
         case 'msg_list':
             msg_list_action('right');
             auto();
             break;
         case 'yes_no_list':
-            var value = msg_create_send_list_data.value;
+            var hash = convert_hash() + '_list_data';
+            var data = window[hash];
+            var value = data.value;
             if (value == 0) {
-                msg_create_send_list_data.value = 1;
+                data.value = 1;
             }
             auto();
             break;
