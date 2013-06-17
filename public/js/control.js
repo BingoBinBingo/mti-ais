@@ -18,7 +18,7 @@ function auto() {
     }
 }
 
-var GetLength = function(str) {
+var GetLength = function (str) {
     ///<summary>获得字符串实际长度，中文2，英文1</summary>
     ///<param name="str">要获得长度的字符串</param>
     var realLength = 0, len = str.length, charCode = -1;
@@ -29,6 +29,19 @@ var GetLength = function(str) {
     }
     return realLength;
 };
+
+function getStrLength(str) {
+    var len = str.length;
+    var result = 0;
+    for (var i = 0; i < len; i++) {
+        if (str.charCodeAt(i) < 27 || str.charCodeAt(i) > 126) {
+            result += 2;
+        } else {
+            result++;
+        }
+    }
+    return result;
+}
 
 
 //主菜单
@@ -138,7 +151,7 @@ function intial() {
 }
 
 function intial_view() {
-    switch  (intial_list_data.active) {
+    switch (intial_list_data.active) {
         case 1:
             location.hash = '#intial/view/mmsg';
             break;
@@ -178,7 +191,7 @@ function intial_view_io() {
 }
 
 function intial_view_io_view() {
-    switch  (intial_view_io_list_data.active) {
+    switch (intial_view_io_list_data.active) {
         case 1:
             location.hash = '#intial/view/io/view/come';
             break;
@@ -222,60 +235,49 @@ function channel_edit_select() {
     render_dbllong_list(channel_edit_select_list_data);
 }
 
-function channel_edit_select_cha()
-{
-    render_numlong_list(channel_edit_select_cha_list_data,2);
+function channel_edit_select_cha() {
+    render_numlong_list(channel_edit_select_cha_list_data, 2);
 }
 
-function channel_edit_select_chb()
-{
-    render_numlong_list(channel_edit_select_chb_list_data,3);
+function channel_edit_select_chb() {
+    render_numlong_list(channel_edit_select_chb_list_data, 3);
 }
 
-function channel_edit_select_zone()
-{
-    render_numlong_list(channel_edit_select_chb_list_data,6);
+function channel_edit_select_zone() {
+    render_numlong_list(channel_edit_select_chb_list_data, 6);
 }
 
-function diagnostics_memory_monitor()
-{
+function diagnostics_memory_monitor() {
     render_list_yes_no_channel_tpl(diagnostics_memory_monitor_list_data);
 }
 
-function diagnostics_memory_set()
-{
+function diagnostics_memory_set() {
     render_list_yes_no_channel_tpl(diagnostics_memory_set_list_data);
 }
 
-function diagnostics_memory_gps()
-{
+function diagnostics_memory_gps() {
     render_list_yes_no_channel_tpl(diagnostics_memory_gps_list_data);
 }
 
-function channel_edit_select_change()
-{
+function channel_edit_select_change() {
     render_dbl_list(channel_edit_select_change_list_data);
 }
 
 
-function channel_edit_select_change_lat()
-{
-    render_numlatlon_list(channel_edit_select_change_lat_list_data,2);
+function channel_edit_select_change_lat() {
+    render_numlatlon_list(channel_edit_select_change_lat_list_data, 2);
 }
 
-function channel_edit_select_change_lon()
-{
-    render_numlatlon_list(channel_edit_select_change_lon_list_data,3);
+function channel_edit_select_change_lon() {
+    render_numlatlon_list(channel_edit_select_change_lon_list_data, 3);
 }
 
-function channel_edit_select_change_lat1()
-{
-    render_numlatlon_list(channel_edit_select_change_lat1_list_data,5);
+function channel_edit_select_change_lat1() {
+    render_numlatlon_list(channel_edit_select_change_lat1_list_data, 5);
 }
 
-function channel_edit_select_change_lon1()
-{
-    render_numlatlon_list(channel_edit_select_change_lon1_list_data,6);
+function channel_edit_select_change_lon1() {
+    render_numlatlon_list(channel_edit_select_change_lon1_list_data, 6);
 }
 
 //=========================================CHANNEL菜单 END ===================================
@@ -284,41 +286,39 @@ function diagnostics() {
     render_list(diagnostics_list_data);
 }
 
-function diagnostics_monitor(){
+function diagnostics_monitor() {
     render_treble_list(diagnostics_monitor_list_data);
 }
 
-function diagnostics_transponder(){
+function diagnostics_transponder() {
     render_list(diagnostics_transponder_list_data);
 }
 
-function diagnostics_pwr(){
+function diagnostics_pwr() {
     render_list(diagnostics_pwr_list_data);
 }
 
-function diagnostics_tx(){
+function diagnostics_tx() {
     render_list(diagnostics_tx_list_data);
 }
 
-function diagnostics_memory(){
+function diagnostics_memory() {
     render_list(diagnostics_memory_list_data);
 }
 
-function diagnostics_activate(){
+function diagnostics_activate() {
     render_list(diagnostics_activate_list_data);
 }
 
-function diagnostics_for(){
+function diagnostics_for() {
     render_list(diagnostics_for_list_data);
 }
 
-function diagnostics_transponder_monitor()
-{
+function diagnostics_transponder_monitor() {
     render_list(diagnostics_transponder_monitor_list_data);
 }
 
-function diagnostics_transponder_gps()
-{
+function diagnostics_transponder_gps() {
     render_list(diagnostics_transponder_gps_list_data);
 }
 
@@ -415,11 +415,11 @@ function msg_list_action(method) {
 
 
 //change事件
-function change(){
+function change() {
     location.hash = '#channel/edit/select/change';
 }
 
-function change2(){
+function change2() {
     location.hash = '#channel/edit/select';
 }
 
@@ -443,13 +443,11 @@ function enter() {
         if (location.hash != '') {
             location.hash += '/' + active;
         }
-        if (location.hash.concat("　") || location.hash.concat("-") || location.hash.concat(":"))
-        {
-            if(location.hash.indexOf("lat:") > 0 || location.hash.indexOf("lon:") > 0)
-            {
-                location.hash = location.hash.replace(/:/g,'1');
+        if (location.hash.concat("　") || location.hash.concat("-") || location.hash.concat(":")) {
+            if (location.hash.indexOf("lat:") > 0 || location.hash.indexOf("lon:") > 0) {
+                location.hash = location.hash.replace(/:/g, '1');
             }
-            location.hash = location.hash.replace(/　/g, '').replace(/-/g, '').replace(/:/g,'');
+            location.hash = location.hash.replace(/　/g, '').replace(/-/g, '').replace(/:/g, '');
         }
         else {
             location.hash += active;
@@ -517,10 +515,10 @@ function up() {
                     $('.active').removeClass('active');
                     $('li:eq(' + data.active + ')').addClass('active');
                 } else if (get_Active_localName() == 'span') {
-                    if(data.active == 2 && $('.active').text().indexOf("′N") == 6)
-                    { change2() }
-                    else
-                    {
+                    if (data.active == 2 && $('.active').text().indexOf("′N") == 6) {
+                        change2()
+                    }
+                    else {
                         $('.active').removeClass('active');
                         $('li:eq(' + data.active + ') span').last().addClass('active');
                     }
@@ -587,10 +585,10 @@ function down() {
                     $('.active').removeClass('active');
                     $('li:eq(' + data.active + ')').addClass('active');
                 } else if (get_Active_localName() == 'span') {
-                    if($('.active').text().indexOf("NM") == 1)
-                    { change() }
-                    else
-                    {
+                    if ($('.active').text().indexOf("NM") == 1) {
+                        change()
+                    }
+                    else {
                         $('.active').removeClass('active');
                         $('li:eq(' + data.active + ') span').last().addClass('active');
                     }
@@ -667,6 +665,19 @@ function left() {
             }
             auto();
             break;
+        case 'num_lonlat_list':
+            var hash = convert_hash() + '_list_data';
+            var data = window[hash];
+            var list = data.key[data.active].split('');
+            if (data.numActive > 0) {
+                data.numActive--;
+            }
+            var num = lastActive * 2 + 1;
+            var pos = $('span:eq(' + num + ')').offset();
+            var str = data.key[data.active].slice(0, data.numActive);
+            var result = getStrLength(str);
+            $('#under').offset({left: pos.left + 8 * result, top: pos.top})
+            break;
     }
 }
 
@@ -676,33 +687,29 @@ function right() {
             var hash = convert_hash() + '_list_data';
             var data = window[hash];
             var list = data.key[data.active].split('');
-            if(list[1] != "N" && list[2] != "M")
-            {
-                if(list[data.numActive + 1] == "°" || list[data.numActive + 1] == ".")
-                {
+            if (list[1] != "N" && list[2] != "M") {
+                if (list[data.numActive + 1] == "°") {
                     if (data.numActive < list.length - 1) {
-                        data.numActive = data.numActive + 2;
+                        data.numActive = data.numActive + 3;
                     }
-                }
-                else
-                {
-                    if (data.numActive < list.length - 1) {
+                } else if (list[data.numActive] == ".") {
+                    data.numActive = data.numActive + 2;
+                } else {
+                    if (data.numActive < list.length - 2) {
                         data.numActive++;
                     }
                 }
             }
             var num = lastActive * 2 + 1;
             var pos = $('span:eq(' + num + ')').offset();
-            if(list[data.numActive -1] == "°")
-            {
-                var tmp = list.slice(0,[data.numActive]);
-                $('#under').offset({left: pos.left + 8 * GetLength(tmp), top: pos.top})
-            }
-            else
-            {
+            if (list[data.numActive - 1] == "°") {
+                var tmp = list.slice(0, [data.numActive]);
                 $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
             }
-
+            else {
+                $('#under').offset({left: pos.left + 8 * data.numActive, top: pos.top})
+            }
+            break;
         case 'msg_list':
             msg_list_action('right');
             auto();
@@ -715,6 +722,19 @@ function right() {
                 data.value = 1;
             }
             auto();
+            break;
+        case 'num_lonlat_list':
+            var hash = convert_hash() + '_list_data';
+            var data = window[hash];
+            var list = data.key[data.active].split('');
+            if (data.numActive < 5) {
+                data.numActive++;
+            }
+            var num = lastActive * 2 + 1;
+            var pos = $('span:eq(' + num + ')').offset();
+            var str = data.key[data.active].slice(0, data.numActive);
+            var result = getStrLength(str);
+            $('#under').offset({left: pos.left + 8 * result, top: pos.top})
             break;
     }
 }

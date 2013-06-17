@@ -202,16 +202,6 @@ function render_sensor_list(data) {
     $('#led').html(list_html);
 }
 
-//function render_numlong_list(data) {
-//    renderType = 'num_list';
-//    var list_html = juicer(numlong_list_tpl, data);
-//    $('#led').html(list_html);
-//    var num = lastActive * 2 + 1;
-//    var pos = $('span:eq(' + num + ')').offset();
-//    $('#under').offset({left: pos.left + data.numActive * 8, top: pos.top})
-//    $('.active').removeClass('active');
-//}
-
 //自设定lastActive
 function render_numlong_list(data,lastActive) {
     renderType = 'num_list';

@@ -1,9 +1,4 @@
-﻿/**
- * User: SteveZheng
- * Date: 13-5-13
- * Time: 上午10:44
- */
-var lastActive = 1;//上级菜单选中值
+﻿var lastActive = 1;//上级菜单选中值
 var renderType = 'list';//渲染方式
 //首页菜单
 var index_list_data = {
