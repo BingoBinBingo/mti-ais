@@ -452,7 +452,7 @@ function enter() {
         else {
             location.hash += active;
         }
-    } else if (renderType == 'num_list') {
+    } else if (renderType == 'num_list' || renderType == 'msg_list') {
         menu();
     } else if (renderType == 'yes_no_list') {
         var hash = convert_hash() + '_list_data';
